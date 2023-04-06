@@ -56,27 +56,35 @@ const routes = [
         start: "chennai",
         end: "tirunelveli",
         stops: ["chennai", "trichy", "tirunelveli"],
-    }
+    },
+    {
+        start: "trichy",
+        end: "chennai",
+        stops: ["trichy", "viluppuram", "chennai"],
+    },
 ];
 
 const getRouteDistanceFromRoutes = (start, end) => {
     const findStops = (routes.find((route) =>
-        (route.start === start && route.end == end)) || { stops: 0 }).stops;
+        (route.start === start && route.end === end)) || { stops: 0 }).stops;
 
     return {
         distance: findStops ? getTotalDistance(findStops) : 0
     }
 }
 
+const hasDistance = (distance, stop, index, array) =>
+    (distance.start === stop || distance.start === array[index + 1])
+    && (distance.end === array[index + 1] || distance.end === stop);
+
+
 const getDistance = (stop, index, array) => (distances.find((distance) =>
-    distance.start === stop && distance.end === array[index + 1])
-    || getRouteDistanceFromRoutes(stop, array[index + 1])).distance;
+    hasDistance(distance, stop, index, array)) || getRouteDistanceFromRoutes(stop, array[index + 1])).distance;
 
 
 const getTotalDistance = (stops) => {
     const routeDistances = stops.map(getDistance);
     const totalDistance = routeDistances.reduce((acc, cur) => acc + cur);
-
 
     return totalDistance;
 }
