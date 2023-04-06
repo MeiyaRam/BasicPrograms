@@ -55,21 +55,21 @@ const transactions = [
 // Implement transaction code here.
 const updateBalancesWithTransactions = (transactions) => {
   transactions.map((transaction) => {
-    (transaction.type==="withdrawal")
-    ?balances[transaction.accountNo]-=transaction.amount
-    :balances[transaction.accountNo]+=transaction.amount
+    (transaction.type === "withdrawal")
+      ? balances[transaction.accountNo] -= transaction.amount
+      : balances[transaction.accountNo] += transaction.amount
   });
 
   return balances;
 }
 
 const displayBalances = (accounts) => {
-const balance =  accounts.map((account) => 
-({ 
-  ...account, 
-  balance: balances[account.accountNo] 
-}));
-console.table(balance);
+  const balance = accounts.map((account) =>
+  ({
+    ...account,
+    balance: balances[account.accountNo]
+  }));
+  console.table(balance);
 };
 
 // Do not change below this line.
