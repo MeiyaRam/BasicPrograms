@@ -1,0 +1,22 @@
+{
+  "name": "basicprograms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bankAccounts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeiyaRam/BasicPrograms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeiyaRam/BasicPrograms/issues"
+  },
+  "homepage": "https://github.com/MeiyaRam/BasicPrograms#readme",
+  "dependencies": {
+    "@laufire/utils": "^3.0.0-0"
+  }
+}
