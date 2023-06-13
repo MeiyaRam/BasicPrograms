@@ -7,6 +7,7 @@ const markSheets = [
         science: 86,
         maths: 97,
         social: 76,
+        hindi: 60,
     },
     {
         student: 'Ram',
@@ -16,7 +17,7 @@ const markSheets = [
         science: 100,
         maths: 34,
         social: 100,
-
+        hindi: 36,
     },
     {
         student: 'sri',
@@ -26,6 +27,7 @@ const markSheets = [
         science: 99,
         maths: 99,
         social: 87,
+        hindi: 94,
     },
     {
         student: 'mani',
@@ -35,6 +37,7 @@ const markSheets = [
         science: 90,
         maths: 83,
         social: 86,
+        hindi: 41,
     },
     {
         student: 'muthu',
@@ -44,6 +47,7 @@ const markSheets = [
         science: 60,
         maths: 38,
         social: 51,
+        hindi: 79,
     },
     {
         student: 'malar',
@@ -53,13 +57,14 @@ const markSheets = [
         science: 90,
         maths: 78,
         social: 59,
+        hindi: 57,
     },
 ];
 
 const getResultCount = (markSheets) =>
     markSheets.reduce((acc, item) => ({
-        countPass: (item.result == "Pass" ? acc.countPass + 1 : acc.countPass),
-        countFail: (item.result == "Fail" ? acc.countFail + 1 : acc.countFail)
+        countPass: (item.result == "pass" ? acc.countPass + 1 : acc.countPass),
+        countFail: (item.result == "fail" ? acc.countFail + 1 : acc.countFail)
     }), { countPass: 0, countFail: 0 });
 
 
@@ -69,19 +74,20 @@ const getRank = (totalMarks) => {
     const rank = rankStatus.map((student, index, array) =>
     ({
         ...student,
-        rank: student.result === "Pass" ? array.filter((mark) => ((mark.total > student.total) && (mark.result === "Pass"))).length + 1 : "-",
+        rank: student.result === "pass" ? array.filter((mark) => ((mark.total > student.total) && (mark.result === "pass"))).length + 1 : "-",
     }));
 
     return rank;
 }
 
 const getResult = (marks) => {
-    const result = Math.min(marks.tamil, marks.english, marks.science, marks.maths, marks.social) >= 35 ? "Pass" : "Fail";
+    const result = Math.min(marks.tamil, marks.english, marks.science, marks.maths, marks.social) >= 35 ? "pass" : "fail";
 
     return { ...marks, result };
 }
 
 const getTotal = (marks) => {
+    const values = Object.values(marks);
     const findTotal = (marks.tamil + marks.english + marks.science + marks.maths + marks.social);
 
     return {
@@ -97,9 +103,6 @@ const getSum = () => {
     
     return rank;
 }
-
-// Do not change below this line.
-
 
 const main = () => {
     console.table(getSum());
