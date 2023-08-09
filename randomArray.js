@@ -6,7 +6,6 @@ const getTwoDArray = () =>
   map(range(1, arrayCount), () =>
     map(range(0, rndBetween(1, 10)), () => 'a'));
 
-
 const main = () =>
   console.log(getTwoDArray());
   
